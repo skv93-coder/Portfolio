@@ -187,14 +187,9 @@ export default function Home() {
               onMouseEnter={() => setIsVisible({ [project.img]: project.img })}
               onMouseLeave={() => setIsVisible({})}
             >
-              {/* <img src={project.img} /> */}
-
               {isVisible[project.img] === project.img && (
                 <>
-                  <div
-                    className={`h-full w-full bg-black `}
-                    style={{ opacity: "0.7", height: "100%" }}
-                  ></div>
+                  <div className={` animation bg-black`}></div>
                   <div className="absolute top-44  mx-auto w-full">
                     <p className="text-white text-2xl px-4">{project.name}</p>
                   </div>
