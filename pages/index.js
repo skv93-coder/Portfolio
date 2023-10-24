@@ -4,8 +4,10 @@ import Typewriter from "typewriter-effect";
 import styles from "../styles/Home.module.css";
 import Icons, { links, techLogo } from "../Components/svg";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState({});
   return (
     <div>
       <Head>
@@ -21,7 +23,13 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Raleway&display=swap"
+          rel="stylesheet"
+        />
+
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="http://code.almeros.com/code-examples/water-effect-canvas/watercanvas.js"></script>
       </Head>
       <header
         className={`flex w-full py-8 items-center	 ${styles.header_shadow}`}
@@ -35,14 +43,14 @@ export default function Home() {
             paddingRight: "15%",
           }}
         >
-          <div className="cursor-pointer  font-medium text-sm">Home</div>
-          <div className="cursor-pointer font-medium text-sm">
+          <div className="cursor-pointer  font-medium text-lg">Home</div>
+          <div className="cursor-pointer font-medium text-lg">
             <a href="#about_me">About</a>
           </div>
-          <div className="cursor-pointer font-medium text-sm">
+          <div className="cursor-pointer font-medium text-lg">
             <a href="#projects">Projects</a>{" "}
           </div>
-          <div className="cursor-pointer font-medium text-sm">
+          <div className="cursor-pointer font-medium text-lg">
             <a href="#contact_me">Contact</a>
           </div>
         </div>
@@ -99,8 +107,16 @@ export default function Home() {
               height: "85vh",
             }}
           >
-            <div className="w-full flex justify-center">
-              <img className="pl-8" width="70%" src="/img-12345.jpg" />
+            <div className="w-full flex justify-end" id="waterHolder">
+              <img
+                className="ml-7  "
+                width="100%"
+                style={{
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+                }}
+                src="https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image_variant/875a25535f45_w480.webp"
+              />
             </div>
           </div>
           <div id="about_me" className="my-10" style={{ height: "60vh" }}>
@@ -142,52 +158,53 @@ export default function Home() {
         <p className="text-center finger_paint text-5xl my-8" id="projects">
           PROJECTS
         </p>
-        <div className="grid grid-cols-2 gap-6 w-full">
+        <div className="grid grid-cols-2 place-items-center	 gap-6 w-full">
           {[
             {
               img: "/math-clash-1.png",
-              name: "MATH CLASH",
+              name: "Math clash, a game to test your speed. Try to select number before time finishes.",
               github: "Math-clash",
               link: "https://skv93-coder.github.io/Math-clash/",
               tech: ["js"],
             },
             {
-              img: "/portfolio-1.png",
-              name: "Portfolio",
+              img: "/portfolio.png",
+              name: "Portfolio website, To show different project i am working on.",
               github: "Portfolio",
               link: "https://portfolio-skv93-coder.vercel.app/",
               tech: ["vercel", "js"],
             },
           ].map((project) => (
-            <div className="project-card">
-              <Image src={project.img} height="600" width="400" />
-              <div className="project-details">
-                <h2>{project.name} </h2>
+            <div
+              className="project-card relative"
+              style={{
+                background: `url(${project.img})`,
+                backgroundSize: "cover",
+                height: "450px",
+                width: "100%",
+                backgroundRepeat: "no-repeat",
+              }}
+              onMouseEnter={() => setIsVisible({ [project.img]: project.img })}
+              onMouseLeave={() => setIsVisible({})}
+            >
+              {/* <img src={project.img} /> */}
 
-                <div className="icons">
-                  <div className="icon icon_hover cursor-pointer">
-                    <a
-                      href={`https://github.com/skv93-coder/${project.github}`}
-                      target="_blank"
-                    >
-                      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" />
-                    </a>
+              {isVisible[project.img] === project.img && (
+                <>
+                  <div
+                    className={`h-full w-full bg-black `}
+                    style={{ opacity: "0.7", height: "100%" }}
+                  ></div>
+                  <div className="absolute top-44  mx-auto w-full">
+                    <p className="text-white text-2xl px-4">{project.name}</p>
                   </div>
-                  {project.link && (
-                    <div className="icon cursor-pointer">
-                      <a target="_blank" href={project.link}>
-                        <img src="5843.jpg" />
-                      </a>
-                    </div>
-                  )}
-
-                  {project.tech.map((r) => (
-                    <div className="icon" title={r}>
-                      {techLogo[r]}
-                    </div>
-                  ))}
-                </div>
-              </div>
+                  <div className="flex w-full justify-around pb-4 items-center absolute bottom-0">
+                    {project.tech.map((r) => (
+                      <div title={r}>{techLogo[r]}</div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>
