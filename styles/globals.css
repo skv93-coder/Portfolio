@@ -7,6 +7,14 @@ body,
   margin: 0;
   font-family: "Finger Paint", sans-serif;
   font-family: "Raleway", sans-serif;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #444f5a;
 }
 ::-webkit-input-placeholder {
@@ -30,17 +38,6 @@ textarea {
   /* overflow: hidden; */
   /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
-
-.project-card:hover {
-  /* transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); */
-}
-
-/* .project-card img { */
-/* width: 100%; */
-/* /*  height: 75%; Set image height to half of card height */
-/* object-fit: cover; */
-/* } */
 
 .project-details {
   display: flex;
@@ -101,18 +98,76 @@ textarea {
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+.project_links {
+  color: white !important;
+  fill: currentColor;
+  cursor: pointer;
+}
+.project_links:hover {
+  color: #0564bd !important;
+  fill: currentColor;
+}
 @keyframes hue {
   0% {
-    height: 10%;
-    width: 10%;
+    height: 0%;
+    width: 0%;
     opacity: 0;
     clip-path: circle(0% at 0 0);
   }
-
   100% {
     height: 100%;
     width: 100%;
     opacity: 0.35;
     clip-path: circle(141.1% at 0 0);
+  }
+}
+
+.main_page {
+  height: 85vh;
+}
+.header_left {
+  padding-left: 15%;
+}
+.header_nav {
+  padding-right: 15%;
+}
+.nav_breadcrumb {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #cecece;
+}
+.nav_breadcrumb span {
+  width: 1.5em;
+  height: 1.5em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  vertical-align: middle;
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.mid__page {
+  height: 60vh;
+}
+
+.mobile_nav-expand {
+  height: 100%;
+}
+.mobile_nav-collapse {
+  overflow: hidden;
+  height: 0;
+}
+.main_body {
+  margin: 0 15%;
+}
+@media (max-width: 600px) {
+  .main_page,
+  .mid__page {
+    height: auto;
+  }
+  .header_left {
+    padding-left: 5%;
+  }
+  .main_body {
+    margin: 0 4%;
   }
 }

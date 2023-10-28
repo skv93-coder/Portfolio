@@ -8,6 +8,10 @@ import { useState } from "react";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState({});
+  const [isNavVisible, setIsNavVisible] = useState(false);
+  const handleNavClick = () => {
+    setIsNavVisible((prev) => !prev);
+  };
   return (
     <div>
       <Head>
@@ -32,43 +36,57 @@ export default function Home() {
         <script src="http://code.almeros.com/code-examples/water-effect-canvas/watercanvas.js"></script>
       </Head>
       <header
-        className={`flex w-full py-8 items-center	 ${styles.header_shadow}`}
+        className={`w-full ${styles.header_shadow}`}
+        style={{ transition: "all" }}
       >
-        <div href="#default" style={{ paddingLeft: "15%" }} className="w-3/5">
-          <h2 style={{ fontSize: "32px" }}>Shubham Sharma</h2>
+        <div className={`flex w-full bg-white py-6 md:py-8 items-center	 `}>
+          <div href="#default" className="w-4/5 md:w-3/5 header_left">
+            <h2 className="text-2xl md:text-4xl	">Shubham Sharma</h2>
+          </div>
+          <nav className="w-2/5 header_nav hidden md:flex justify-around text-base">
+            <div className="cursor-pointer  font-medium text-lg">Home</div>
+            <div className="cursor-pointer font-medium text-lg">
+              <a href="#about_me">About</a>
+            </div>
+            <div className="cursor-pointer font-medium text-lg">
+              <a href="#projects">Projects</a>
+            </div>
+            <div className="cursor-pointer font-medium text-lg">
+              <a href="#contact_me">Contact</a>
+            </div>
+          </nav>
+          <button
+            onClick={handleNavClick}
+            className=" nav_breadcrumb md:hidden rounded ml-4"
+          >
+            <span className=""></span>
+          </button>
         </div>
-        <div
-          className="w-2/5 flex justify-around text-base"
-          style={{
-            paddingRight: "15%",
-          }}
+        <nav
+          className={`md:hidden  header_left ${
+            !isNavVisible ? "mobile_nav-collapse " : "mobile_nav-expand"
+          } `}
         >
-          <div className="cursor-pointer  font-medium text-lg">Home</div>
-          <div className="cursor-pointer font-medium text-lg">
+          {/* [''] */}
+          <div className="cursor-pointer  font-medium mb-2 text-lg">Home</div>
+          <div className="cursor-pointer  font-medium mb-2 text-lg">
             <a href="#about_me">About</a>
           </div>
-          <div className="cursor-pointer font-medium text-lg">
-            <a href="#projects">Projects</a>{" "}
+          <div className="cursor-pointer  font-medium mb-2 text-lg">
+            <a href="#projects">Projects</a>
           </div>
-          <div className="cursor-pointer font-medium text-lg">
+          <div className="cursor-pointer  mb-2	 font-medium text-lg">
             <a href="#contact_me">Contact</a>
           </div>
-        </div>
+        </nav>
       </header>
 
-      <main style={{ margin: "0 15%" }}>
-        <div className="grid grid-cols-2	gap-y-6">
-          <div
-            className="flex items-center"
-            style={{
-              height: "85vh",
-            }}
-          >
+      <main className="main_body">
+        <div className="grid md:grid-cols-2 grid-cols-1	gap-y-6">
+          <div className="flex items-center main_page">
             <div>
-              <h1 className="text-2xl finger_paint font-normal">
-                Hello! 👋 My name is
-              </h1>
-              <p className="text-5xl my-8 mr-4">Shubham Sharma</p>
+              <h1 className="text-2xl  font-normal">Hello! 👋 My name is</h1>
+              <p className="text-5xl finger_paint my-8 mr-4">Shubham Sharma</p>
 
               <h1
                 className=" font-normal text-2xl"
@@ -101,12 +119,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div
-            className="flex items-center justify-center	"
-            style={{
-              height: "85vh",
-            }}
-          >
+          <div className="flex main_page items-center justify-center	">
             <div className="w-full flex justify-end" id="waterHolder">
               <img
                 className="ml-7  "
@@ -119,7 +132,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div id="about_me" className="my-10" style={{ height: "60vh" }}>
+          <div id="about_me" className="my-10 mid__page">
             <p className="text-5xl finger_paint my-4 mx-2 text-center	">
               ABOUT ME
             </p>
@@ -141,15 +154,15 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="my-6" style={{ height: "60vh" }}>
+          <div className="my-6 mid__page">
             <p className="text-5xl finger_paint text-center my-4 mx-2 items-center">
               SKILLS
             </p>
-            <div className="grid grid-cols-3 pl-7">
+            <div className="grid grid-cols-2 md:grid-cols-3 md:pl-7">
               {Icons.map((r) => (
-                <div className="flex items-center p-5">
-                  <div className="h-12 w-12"> {r.icon}</div>
-                  <div className="text-base ml-6">{r.name}</div>
+                <div className="flex items-end md:items-center p-3 md:p-5">
+                  <div className="h-12 w-12 flex items-center"> {r.icon}</div>
+                  <div className="text-base ml-3 md:ml-6">{r.name}</div>
                 </div>
               ))}
             </div>
@@ -158,7 +171,7 @@ export default function Home() {
         <p className="text-center finger_paint text-5xl my-8" id="projects">
           PROJECTS
         </p>
-        <div className="grid grid-cols-2 place-items-center	 gap-6 w-full">
+        <div className="grid md:grid-cols-2 grid-cols-1 place-items-center	 gap-6 w-full">
           {[
             {
               img: "/math-clash-1.png",
@@ -177,21 +190,52 @@ export default function Home() {
           ].map((project) => (
             <div
               className="project-card relative"
-              style={{
-                background: `url(${project.img})`,
-                backgroundSize: "cover",
-                height: "450px",
-                width: "100%",
-                backgroundRepeat: "no-repeat",
-              }}
               onMouseEnter={() => setIsVisible({ [project.img]: project.img })}
               onMouseLeave={() => setIsVisible({})}
             >
+              <img src={`${project.img}`} className="h-auto w-full" />
               {isVisible[project.img] === project.img && (
                 <>
-                  <div className={` animation bg-black`}></div>
-                  <div className="absolute top-44  mx-auto w-full">
-                    <p className="text-white text-2xl px-4">{project.name}</p>
+                  <div className={`absolute top-0 animation bg-black`}></div>
+                  <div className="absolute top-20 md:top-40  mx-auto w-full">
+                    <p className="text-justify mb-4 text-xl text-white md:text-2xl px-4">
+                      {project.name}
+                    </p>
+                    <div className=" mx-auto flex justify-center w-full ">
+                      <a
+                        className="project_links"
+                        href={
+                          "https://github.com/skv93-coder/" + project.github
+                        }
+                        target="_blank"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25px"
+                          height="25px"
+                          fill="currentColor"
+                          viewBox="0 0 18 18"
+                        >
+                          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                        </svg>
+                      </a>
+                      <a
+                        target="_blank"
+                        className="project_links ml-4"
+                        href={project.link}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25px"
+                          height="25px"
+                          fill="currentColor"
+                          viewBox="0 0 18 18"
+                        >
+                          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                   <div className="flex w-full justify-around pb-4 items-center absolute bottom-0">
                     {project.tech.map((r) => (
@@ -206,7 +250,7 @@ export default function Home() {
         <p className="text-center finger_paint text-5xl py-12" id="contact_me">
           CONTACT ME
         </p>
-        <div className="grid grid-cols-3">
+        <div className="md:grid md:grid-cols-3">
           <div className="flex items-center">
             <div>
               <p className="italic text-4xl mb-3">Have an idea ?</p>
@@ -215,15 +259,15 @@ export default function Home() {
           </div>
           <div style={{ gridColumnStart: 2, gridColumnEnd: 4 }}>
             <form className="w-full">
-              <div className="w-full flex justify-between">
+              <div className="w-full md:flex justify-between">
                 <input
                   placeholder="Name"
-                  className="py-8 rounded-xl	 px-10 w-3/6"
+                  className="py-8 rounded-xl	 px-10 w-full md:w-3/6"
                   required
                 />
                 <input
                   placeholder="Email"
-                  className="w-3/6 rounded-xl ml-4 py-8 px-10"
+                  className="w-full md:w-3/6 rounded-xl md:ml-4 mt-10 md:mt-0 py-8 px-10"
                   required
                 />
               </div>
@@ -232,11 +276,20 @@ export default function Home() {
                 className="py-8 px-10 rounded-xl w-full my-10"
                 required
               />
-              <textarea className="py-8 px-10 mb-6 w-full" rows="10" required />
-              <div className="w-full flex justify-end	" placeholder="Message">
+              <textarea
+                className="py-8 rounded-xl px-10 mb-6 w-full"
+                rows="10"
+                required
+              />
+              <div
+                className="w-full flex md:justify-end mb-10	"
+                placeholder="Message"
+              >
                 <button
+                  disabled
+                  title="It is not working right now"
                   type="submit"
-                  className="text-white py-6 px-10 text-2xl rounded-3xl"
+                  className="text-white md:w-auto w-full py-6 px-10 text-2xl rounded-3xl"
                   style={{
                     backgroundColor: "#0564bd",
                   }}
@@ -251,7 +304,7 @@ export default function Home() {
 
       <footer className="py-10" style={{ background: "#444f5a" }}>
         <div
-          className="flex justify-between items-center"
+          className="flex justify-between main__body items-center"
           style={{
             padding: "0 15%",
           }}
