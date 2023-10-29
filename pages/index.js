@@ -3,7 +3,6 @@ import Typewriter from "typewriter-effect";
 
 import styles from "../styles/Home.module.css";
 import Icons, { links, techLogo } from "../Components/svg";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
@@ -66,6 +65,7 @@ export default function Home() {
           className={`md:hidden  header_left ${
             !isNavVisible ? "mobile_nav-collapse " : "mobile_nav-expand"
           } `}
+          onClick={handleNavClick}
         >
           {/* [''] */}
           <div className="cursor-pointer  font-medium mb-2 text-lg">Home</div>
@@ -85,11 +85,15 @@ export default function Home() {
         <div className="grid md:grid-cols-2 grid-cols-1	gap-y-6">
           <div className="flex items-center main_page">
             <div>
-              <h1 className="text-2xl  font-normal">Hello! 👋 My name is</h1>
-              <p className="text-5xl finger_paint my-8 mr-4">Shubham Sharma</p>
+              <h1 className="text-2xl text-center md:text-justify font-normal">
+                Hello! 👋 My name is
+              </h1>
+              <p className="text-5xl text-center md:text-justify finger_paint my-4 md:my-8 mr-4">
+                Shubham Sharma
+              </p>
 
               <h1
-                className=" font-normal text-2xl"
+                className=" font-normal text-center md:text-justify text-2xl"
                 style={{
                   color: "#0564bd",
                 }}
@@ -108,7 +112,7 @@ export default function Home() {
                   }}
                 />
               </h1>
-              <div className="text-2xl flex">
+              <div className="text-2xl flex justify-end md:justify-normal ">
                 {links.map((r, i) => (
                   <div className={`py-12 pr-12 ${i !== 0 && "pl-12"}`}>
                     <a href={r.link} target="_blank">
@@ -262,34 +266,34 @@ export default function Home() {
               <div className="w-full md:flex justify-between">
                 <input
                   placeholder="Name"
-                  className="py-8 rounded-xl	 px-10 w-full md:w-3/6"
+                  className="py-4 md:py-8 md:rounded-xl	 px-10 w-full md:w-3/6"
                   required
                 />
                 <input
                   placeholder="Email"
-                  className="w-full md:w-3/6 rounded-xl md:ml-4 mt-10 md:mt-0 py-8 px-10"
+                  className="w-full md:w-3/6 md:rounded-xl md:ml-4 mt-10 md:mt-0 py-4 md:py-8 px-10"
                   required
                 />
               </div>
               <input
                 placeholder="Subject"
-                className="py-8 px-10 rounded-xl w-full my-10"
+                className="py-4 md:py-8 px-10 md:rounded-xl w-full my-10"
                 required
               />
               <textarea
-                className="py-8 rounded-xl px-10 mb-6 w-full"
+                className="py-8 md:rounded-xl px-10 mb-6 w-full"
                 rows="10"
                 required
               />
               <div
-                className="w-full flex md:justify-end mb-10	"
+                className="w-full flex justify-center md:justify-end mb-10	"
                 placeholder="Message"
               >
                 <button
                   disabled
                   title="It is not working right now"
                   type="submit"
-                  className="text-white md:w-auto w-full py-6 px-10 text-2xl rounded-3xl"
+                  className="text-white py-3 md:py-6 px-8 md:px-10  md:text-2xl text-xl rounded-3xl"
                   style={{
                     backgroundColor: "#0564bd",
                   }}
@@ -309,7 +313,7 @@ export default function Home() {
             padding: "0 15%",
           }}
         >
-          <p className="text-white  text-3xl">
+          <p className="text-white  md:text-3xl">
             Made with ❤️, By Shubham Sharma,
           </p>
         </div>
