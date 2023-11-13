@@ -193,10 +193,10 @@ export default function Home() {
             },
             {
               img: "/cigar.png",
-              name: "Cigar website, To measure pollution.",
+              name: "Cigarette website, an amuseing way to track pollution.",
               github: "cigarette-i-smoked",
               link: "https://skv93-coder.github.io/cigarette-i-smoked/",
-              tech: ["js"],
+              tech: ["js", "github"],
             },
           ].map((project) => (
             <div
