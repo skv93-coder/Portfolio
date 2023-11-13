@@ -196,7 +196,7 @@ export default function Home() {
               name: "Cigarette website, an amuseing way to track pollution.",
               github: "cigarette-i-smoked",
               link: "https://skv93-coder.github.io/cigarette-i-smoked/",
-              tech: ["js", "github"],
+              tech: ["js"],
             },
           ].map((project) => (
             <div
