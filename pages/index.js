@@ -194,7 +194,7 @@ export default function Home() {
             {
               img: "/cigar.png",
               name: "Cigar website, To measure pollution.",
-              github: "Cigar",
+              github: "cigarette-i-smoked",
               link: "https://skv93-coder.github.io/cigarette-i-smoked/",
               tech: ["js"],
             },
