@@ -191,6 +191,13 @@ export default function Home() {
               link: "https://portfolio-skv93-coder.vercel.app/",
               tech: ["vercel", "js"],
             },
+            {
+              img: "/cigar.png",
+              name: "Cigar website, To measure pollution.",
+              github: "Cigar",
+              link: "https://skv93-coder.github.io/cigarette-i-smoked/",
+              tech: ["js"],
+            },
           ].map((project) => (
             <div
               className="project-card relative"
