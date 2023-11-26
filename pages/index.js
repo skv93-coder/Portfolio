@@ -114,7 +114,10 @@ export default function Home() {
               </h1>
               <div className="text-2xl flex justify-end md:justify-normal ">
                 {links.map((r, i) => (
-                  <div className={`py-12 pr-12 ${i !== 0 && "pl-12"}`}>
+                  <div
+                    key={r.link}
+                    className={`py-12 pr-12 ${i !== 0 && "pl-12"}`}
+                  >
                     <a href={r.link} target="_blank">
                       {r.icon}
                     </a>
@@ -164,7 +167,10 @@ export default function Home() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 md:pl-7">
               {Icons.map((r) => (
-                <div className="flex items-end md:items-center p-3 md:p-5">
+                <div
+                  key={r.name}
+                  className="flex items-end md:items-center p-3 md:p-5"
+                >
                   <div className="h-12 w-12 flex items-center"> {r.icon}</div>
                   <div className="text-base ml-3 md:ml-6">{r.name}</div>
                 </div>
@@ -200,6 +206,7 @@ export default function Home() {
             },
           ].map((project) => (
             <div
+              key={project.link}
               className="project-card relative"
               onMouseEnter={() => setIsVisible({ [project.img]: project.img })}
               onMouseLeave={() => setIsVisible({})}
@@ -250,7 +257,9 @@ export default function Home() {
                   </div>
                   <div className="flex w-full justify-around pb-4 items-center absolute bottom-0">
                     {project.tech.map((r) => (
-                      <div title={r}>{techLogo[r]}</div>
+                      <div key={r} title={r}>
+                        {techLogo[r]}
+                      </div>
                     ))}
                   </div>
                 </>
