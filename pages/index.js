@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Typewriter from "typewriter-effect";
+import { useSearchParams } from "next/navigation";
 
 import styles from "../styles/Home.module.css";
 import Icons, { links, techLogo } from "../Components/svg";
@@ -11,6 +12,8 @@ export default function Home() {
   const handleNavClick = () => {
     setIsNavVisible((prev) => !prev);
   };
+  const searchParams = useSearchParams();
+  const isDev = searchParams.get("dev") === "true";
   return (
     <div>
       <Head>
@@ -35,8 +38,8 @@ export default function Home() {
         <script src="http://code.almeros.com/code-examples/water-effect-canvas/watercanvas.js"></script>
       </Head>
       <header
-        className={`w-full ${styles.header_shadow}`}
-        style={{ transition: "all" }}
+        className={`w-full ${styles.header_shadow} bg-white`}
+        style={{ transition: "all", position: "fixed" }}
       >
         <div className={`flex w-full bg-white py-6 md:py-8 items-center	 `}>
           <div href="#default" className="w-4/5 md:w-3/5 header_left">
@@ -81,7 +84,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="main_body">
+      <main className="main_body pt-24">
         <div className="grid md:grid-cols-2 grid-cols-1	gap-y-6">
           <div className="flex items-center main_page">
             <div>
@@ -207,7 +210,7 @@ export default function Home() {
           ].map((project) => (
             <div
               key={project.link}
-              className="project-card relative"
+              className="project-card "
               onMouseEnter={() => setIsVisible({ [project.img]: project.img })}
               onMouseLeave={() => setIsVisible({})}
             >
@@ -267,6 +270,39 @@ export default function Home() {
             </div>
           ))}
         </div>
+        {isDev && (
+          <>
+            <p className="text-center finger_paint text-5xl my-8" id="projects">
+              Work History
+            </p>
+            <div>
+              <ol className="relative border-s border-gray-200 dark:border-gray-700">
+                {[
+                  {
+                    startedOn: "Feb 2021 - May 2022",
+                    desgination: "Softwar devloper engineer",
+                    description:
+                      "I worked on multiple projects of the company. I solved many problems there such as multi page form",
+                    TechStack: ["Reactjs", "Nodejs", "Mongodb", "PostgresSQL"],
+                  },
+                ].map((work) => (
+                  <li className="mb-10 ms-4">
+                    <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700" />
+                    <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                      {work.startedOn}
+                    </time>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {work.desgination}
+                    </h3>
+                    <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                      {work.description}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </>
+        )}
         <p className="text-center finger_paint text-5xl py-12" id="contact_me">
           CONTACT ME
         </p>
