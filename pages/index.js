@@ -15,7 +15,7 @@ export default function Home() {
   const searchParams = useSearchParams();
   const isDev = searchParams.get("dev") === "true";
   return (
-    <div>
+    <div className="pt-24">
       <Head>
         <title>Shubham Sharma--Portfolio</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
@@ -38,8 +38,8 @@ export default function Home() {
         <script src="http://code.almeros.com/code-examples/water-effect-canvas/watercanvas.js"></script>
       </Head>
       <header
-        className={`w-full ${styles.header_shadow} bg-white`}
-        style={{ transition: "all", position: "fixed" }}
+        className={`w-full ${styles.header_shadow} z-10 bg-white top-0 fixed`}
+        style={{ transition: "all" }}
       >
         <div className={`flex w-full bg-white py-6 md:py-8 items-center	 `}>
           <div href="#default" className="w-4/5 md:w-3/5 header_left">
@@ -84,7 +84,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="main_body pt-24">
+      <main className="main_body ">
         <div className="grid md:grid-cols-2 grid-cols-1	gap-y-6">
           <div className="flex items-center main_page">
             <div>
@@ -210,7 +210,7 @@ export default function Home() {
           ].map((project) => (
             <div
               key={project.link}
-              className="project-card "
+              className="project-card relative"
               onMouseEnter={() => setIsVisible({ [project.img]: project.img })}
               onMouseLeave={() => setIsVisible({})}
             >
@@ -276,7 +276,7 @@ export default function Home() {
               Work History
             </p>
             <div>
-              <ol className="relative border-s border-gray-200 dark:border-gray-700">
+              <ol className=" border-s border-gray-200 dark:border-gray-700">
                 {[
                   {
                     startedOn: "Feb 2021 - May 2022",
@@ -286,7 +286,7 @@ export default function Home() {
                     TechStack: ["Reactjs", "Nodejs", "Mongodb", "PostgresSQL"],
                   },
                 ].map((work) => (
-                  <li className="mb-10 ms-4">
+                  <li className="mb-10 ms-4" key={work.description}>
                     <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700" />
                     <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                       {work.startedOn}
@@ -303,6 +303,14 @@ export default function Home() {
             </div>
           </>
         )}
+        <p className="text-center finger_paint text-5xl my-8">Resume</p>
+        <iframe
+          src="/shubham_sharma_resume_.pdf"
+          className="iframe__resume md:block hidden"
+        />
+        <a href="/shubham_sharma_resume_.pdf" target="_blank">
+          <img src="/resume_icon.jpg" className="md:hidden block" />
+        </a>
         <p className="text-center finger_paint text-5xl py-12" id="contact_me">
           CONTACT ME
         </p>
