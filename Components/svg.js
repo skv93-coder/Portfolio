@@ -237,6 +237,12 @@ const Icons = [
       </svg>
     ),
   },
+  {
+    name: "Jest",
+    icon: (
+      <img src="https://avatars.githubusercontent.com/u/103283236?s=48&v=4" />
+    ),
+  },
 ];
 
 export default Icons;
