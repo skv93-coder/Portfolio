@@ -192,6 +192,8 @@ export default function Home() {
               github: "Math-clash",
               link: "https://skv93-coder.github.io/Math-clash/",
               tech: ["js"],
+              txtColor:'text-gray-100	'
+
             },
             {
               img: "/portfolio.png",
@@ -199,12 +201,15 @@ export default function Home() {
               github: "Portfolio",
               link: "https://portfolio-skv93-coder.vercel.app/",
               tech: ["vercel", "js"],
+              txtColor:'project-overview'
+
             },
             {
               img: "/cigar.png",
               name: "Cigarette website, an amuseing way to track pollution.",
               github: "cigarette-i-smoked",
               link: "https://skv93-coder.github.io/cigarette-i-smoked/",
+              txtColor:'project-overview',
               tech: ["js"],
             },
             {
@@ -213,6 +218,7 @@ export default function Home() {
               github: "word-count-table",
               link: "",
               tech: ["js"],
+              txtColor:'text-gray-100'
             },
           ].map((project) => (
             <div
@@ -226,7 +232,7 @@ export default function Home() {
                 <>
                   <div className={`absolute top-0 animation bg-black`}></div>
                   <div className="absolute top-36 md:top-48  mx-auto w-full">
-                    <p className="text-justify  mb-4 text-xl project-overview md:text-2xl px-4">
+                    <p className={`text-justify  mb-4 text-xl ${project.txtColor} md:text-2xl px-4`}>
                       {project.name}
                     </p>
                     <div className=" mx-auto flex justify-center w-full ">
