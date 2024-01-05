@@ -18,7 +18,7 @@ export default function Home() {
     <div className="pt-24">
       <Head>
         <title>Shubham Sharma--Portfolio</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -36,6 +36,24 @@ export default function Home() {
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="http://code.almeros.com/code-examples/water-effect-canvas/watercanvas.js"></script>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <header
         className={`w-full ${styles.header_shadow} z-10 bg-white top-0 fixed`}
@@ -192,8 +210,7 @@ export default function Home() {
               github: "Math-clash",
               link: "https://skv93-coder.github.io/Math-clash/",
               tech: ["js"],
-              txtColor:'text-gray-100	'
-
+              txtColor: "text-gray-100	",
             },
             {
               img: "/portfolio.png",
@@ -201,15 +218,14 @@ export default function Home() {
               github: "Portfolio",
               link: "https://portfolio-skv93-coder.vercel.app/",
               tech: ["vercel", "js"],
-              txtColor:'project-overview'
-
+              txtColor: "project-overview",
             },
             {
               img: "/cigar.png",
               name: "Cigarette website, an amuseing way to track pollution.",
               github: "cigarette-i-smoked",
               link: "https://skv93-coder.github.io/cigarette-i-smoked/",
-              txtColor:'project-overview',
+              txtColor: "project-overview",
               tech: ["js"],
             },
             {
@@ -218,7 +234,7 @@ export default function Home() {
               github: "word-count-table",
               link: "",
               tech: ["js"],
-              txtColor:'text-gray-100'
+              txtColor: "text-gray-100",
             },
           ].map((project) => (
             <div
@@ -232,7 +248,9 @@ export default function Home() {
                 <>
                   <div className={`absolute top-0 animation bg-black`}></div>
                   <div className="absolute top-36 md:top-48  mx-auto w-full">
-                    <p className={`text-justify  mb-4 text-xl ${project.txtColor} md:text-2xl px-4`}>
+                    <p
+                      className={`text-justify  mb-4 text-xl ${project.txtColor} md:text-2xl px-4`}
+                    >
                       {project.name}
                     </p>
                     <div className=" mx-auto flex justify-center w-full ">
