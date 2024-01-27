@@ -206,7 +206,7 @@ export default function Home() {
           {[
             {
               img: "/math-clash-1.png",
-              name: "Math clash, a game to test your speed. Try to select number before time finishes.",
+              name: "Math clash, to test your speed.",
               github: "Math-clash",
               link: "https://skv93-coder.github.io/Math-clash/",
               tech: ["js"],
@@ -214,7 +214,7 @@ export default function Home() {
             },
             {
               img: "/portfolio.png",
-              name: "Portfolio website, To show different project i am working on.",
+              name: "Portfolio website, to show what am i working in.",
               github: "Portfolio",
               link: "https://portfolio-skv93-coder.vercel.app/",
               tech: ["vercel", "js"],
@@ -222,7 +222,7 @@ export default function Home() {
             },
             {
               img: "/cigar.png",
-              name: "Cigarette website, an amuseing way to track pollution.",
+              name: "Cigarette website, to track various data points.",
               github: "cigarette-i-smoked",
               link: "https://skv93-coder.github.io/cigarette-i-smoked/",
               txtColor: "project-overview",
@@ -230,7 +230,7 @@ export default function Home() {
             },
             {
               img: "/word-count-table.png",
-              name: "A CLI tool, which operates like wc and shows info as table",
+              name: "CLI tool, works like wc",
               github: "word-count-table",
               link: "",
               tech: ["js"],
@@ -248,11 +248,7 @@ export default function Home() {
                 <>
                   <div className={`absolute top-0 animation bg-black`}></div>
                   <div className="absolute top-36 md:top-48  mx-auto w-full">
-                    <p
-                      className={`text-justify  mb-4 text-xl ${project.txtColor} md:text-2xl px-4`}
-                    >
-                      {project.name}
-                    </p>
+        
                     <div className=" mx-auto flex justify-center w-full ">
                       <a
                         className="project_links"
@@ -313,10 +309,10 @@ export default function Home() {
                 {[
                   {
                     startedOn: "Feb 2021 - May 2022",
-                    desgination: "Softwar devloper engineer",
+                    desgination: "Software developer engineer",
                     description:
                       "I worked on multiple projects of the company. I solved many problems there such as multi page form",
-                    TechStack: ["Reactjs", "Nodejs", "Mongodb", "PostgresSQL"],
+                    TechStack: ["ReactJs", "Nodejs", "Mongodb", "PostgresSQL"],
                   },
                 ].map((work) => (
                   <li className="mb-10 ms-4" key={work.description}>
